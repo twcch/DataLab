@@ -1,4 +1,9 @@
-with open('./test/data.csv', 'r') as f:
-    rows = f.readlines()
+import requests
 
-print(rows[0])
+
+url = 'https://www.ptt.cc/bbs/Gossiping/index.html'
+cookies = {'over18': '1'}
+res = requests.get(url, cookies=cookies)
+print(res.text)
+
+
