@@ -29,7 +29,7 @@ y_test_scaled = scaler_y.transform(y_test)
 train_set = RegressionDataset(X_train_scaled, y_train_scaled)  # 使用標準化後的數據，建立回歸數據集
 
 # 選擇設備
-device = torch.device("mps" if torch.backends.mps.is_available() else 'cpu')
+device = torch.device('mps' if torch.backends.mps.is_available() else 'cpu')
 
 # 建立模型與訓練器
 model = FCNN(input_dim=1, hidden_dim=32, output_dim=1)  # 初始化單隱藏層全連接神經網路 (FCNN)
