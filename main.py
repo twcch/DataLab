@@ -1,10 +1,11 @@
-from models.fcnn import FCNN
-from trainers.fcnn_trainer import FCNNTrainer
-from datasets.regression_dataset import RegressionDataset
+from torch import optim, nn
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_squared_error
-from torch import optim, nn
+from models.fcnn import FCNN
+from trainers.fcnn_trainer import FCNNTrainer
+from datasets.regression_dataset import RegressionDataset
+from utils.model_saver import ModelSaver
 
 import torch
 import numpy as np
@@ -60,4 +61,5 @@ print(f"Train MSE: {train_mse:.4f}")
 print(f"Test MSE: {test_mse:.4f}")
 
 # 儲存模型
-trainer.save_model("experiments/run_2025_04_04/model.pt")  # 將訓練好的模型儲存到指定路徑
+ms = ModelSaver()
+ms.save_model(trainer)  # 將訓練好的模型儲存到指定路徑
